@@ -1,0 +1,40 @@
+Install guide
+
+requirements
+    -- I use my variant of extended yii CConsoleCommand @see http://radzserg.blogspot.com/2011/12/continue-to-write-about-yii-and-sharing.html
+    -- I used Mail class extended Zend_Mail, nothing special except autoloading
+
+copy csb to your application protected/modules folder
+
+Set up config
+
+    'params'=>array(
+        ...
+        'csb' => array(
+            // specify all time in seconds
+            'shortIntervals' => array(
+                array('time' => 5, 'count' => 5, 'blockTime' => 600),
+                array('time' => 60, 'count' => 30, 'blockTime' => 600),
+                // any other
+            ),
+            'longIntervals' => array(
+                array('time' => 600, 'count' => 100, 'blockTime' => 3600)
+            ),
+            'checkScriptSchedule' => 600, // seconds, should be equal cron schedule
+            'notifyAdmin' => true,        // if true will notify admin about new blocked users
+            'adminEmail' => 'admin@mail.com',
+            'debugMode' => false,         // if true will only log data about blocking without real user blocking
+        ),
+    ),
+console command
+
+    'commandMap'=>array(
+            ....
+            'csbchecker' =>  array(
+                'class' => 'application.modules.pct.commands.PctCheckerCommand',
+            ),
+        ),
+
+
+
+customize PctController
