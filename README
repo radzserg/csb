@@ -24,6 +24,7 @@ Set up config
             'notifyAdmin' => true,        // if true will notify admin about new blocked users
             'adminEmail' => 'admin@mail.com',
             'debugMode' => false,         // if true will only log data about blocking without real user blocking
+            'httpBlAccessKey' => 'access_key',  // to projecthoneypot
         ),
     ),
 console command
@@ -31,10 +32,10 @@ console command
     'commandMap'=>array(
             ....
             'csbchecker' =>  array(
-                'class' => 'application.modules.pct.commands.PctCheckerCommand',
+                'class' => 'application.modules.pct.commands.CsbCheckerCommand',
             ),
         ),
 
 
 
-customize PctController
+customize CsbController
