@@ -2,7 +2,7 @@
 
 /**
  * Check suspicious behavior checker main command
- * Analyze logs in long interval, clear old logs
+ * Analyze logs in long interval, clear old logspcs
  *   
  * @package PCT
  * @author radzserg
@@ -13,7 +13,7 @@ class CsbCheckerCommand extends ConsoleCommand
 
     public function actionIndex()
     {
-        $scheduleSeconds = (int)Yii::app()->params['pct']['checkScriptSchedule'];
+        $scheduleSeconds = (int)Yii::app()->params['csb']['checkScriptSchedule'];
         $fromCheckPointTime = date('Y-m-d H:i:s', strtotime("-{$scheduleSeconds} seconds"));
         
         $this->_verbose('Check long interval requests...');
@@ -34,7 +34,7 @@ class CsbCheckerCommand extends ConsoleCommand
      */
     private function _sendNotification($fromCheckPointTime)
     {        
-        if (!Yii::app()->params['pct']['notifyAdmin'] || empty(Yii::app()->params['pct']['adminEmail'])) {
+        if (!Yii::app()->params['pct']['notifyAdmin'] || empty(Yii::app()->params['csb']['adminEmail'])) {
             return ;
         }
 
@@ -70,7 +70,7 @@ class CsbCheckerCommand extends ConsoleCommand
         $mail = new Mail();
         $mail->setSubject('Some users were blocked')
             ->setBodyHtml($notification)
-            ->addTo(Yii::app()->params['pct']['adminEmail'])
+            ->addTo(Yii::app()->params['csb']['adminEmail'])
             ->send();
 
         $this->_verbose("Email was sent to admin", null, self::VERBOSE_INFO);

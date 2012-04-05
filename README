@@ -32,7 +32,7 @@ console command
     'commandMap'=>array(
             ....
             'csbchecker' =>  array(
-                'class' => 'application.modules.pct.commands.CsbCheckerCommand',
+                'class' => 'application.modules.csb.commands.CsbCheckerCommand',
             ),
         ),
 
