@@ -34,7 +34,7 @@ class CsbCheckerCommand extends ConsoleCommand
      */
     private function _sendNotification($fromCheckPointTime)
     {        
-        if (!Yii::app()->params['pct']['notifyAdmin'] || empty(Yii::app()->params['csb']['adminEmail'])) {
+        if (!Yii::app()->params['csb']['notifyAdmin'] || empty(Yii::app()->params['csb']['adminEmail'])) {
             return ;
         }
 
