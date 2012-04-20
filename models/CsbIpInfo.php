@@ -127,7 +127,6 @@ class CsbIpInfo extends CActiveRecord
 
     }
 
-
     /**
      * Add new ip info
      * @param $ip
@@ -137,9 +136,12 @@ class CsbIpInfo extends CActiveRecord
      */
     public function addIpInfo($ip, $type, $tillTime)
     {
-        $ipInfo = new CsbIpInfo();
+        $ipInfo = CsbIpInfo::model()->find('id = :ip', array(':ip' => ip2long($ip)));
+        if (!$ipInfo) {
+            $ipInfo = new CsbIpInfo();
+            $ipInfo->ip = ip2long($ip);
+        }
         $ipInfo->setAttributes(array(
-            'ip' => ip2long($ip),
             'ip_type' => $type,
             'till_time' => $tillTime,
         ));

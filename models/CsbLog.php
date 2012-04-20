@@ -152,7 +152,10 @@ class CsbLog extends CActiveRecord
         }
 
         $unsetVariables = array('PATH', 'SERVER_SIGNATURE', 'SERVER_SOFTWARE', 'SERVER_NAME', 'SERVER_ADDR',
-            'SERVER_PORT', 'DOCUMENT_ROOT', 'SERVER_ADMIN', 'SCRIPT_FILENAME', 'REMOTE_PORT');
+            'SERVER_PORT', 'DOCUMENT_ROOT', 'SERVER_ADMIN', 'SCRIPT_FILENAME', 'REMOTE_PORT', 'REDIRECT_HANDLE',
+            'PHP_INI_SCAN_DIR', 'GATEWAY_INTERFACE', 'SERVER_PROTOCOL', 'ORIG_SCRIPT_FILENAME', 'ORIG_PATH_TRANSLATED',
+            'ORIG_SCRIPT_NAME', 'PHP_SELF'
+        );
 
         $filteredInfo = array();
         foreach ($server as $key => $value) {
