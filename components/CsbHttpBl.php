@@ -73,7 +73,7 @@ class CsbHttpBl
         $octets = explode('.', $result);
         $visitorType = $octets[3];
 
-        return $visitorType;
+        return (int)$visitorType;
     }
 
     /**
