@@ -5,14 +5,14 @@ class m120328_182028_add_csb_module extends CDbMigration
 	public function up()
 	{
         $this->createTable('csb_request', array(
-            'ip' => 'INT NOT NULL',
+            'ip' => 'INT UNSIGNED NOT NULL',
             'time' => 'DATETIME NOT NULL',
         ), 'ENGINE = Memory');
         $this->createIndex('csb_request_f_ip', 'csb_request', 'ip');
         $this->createIndex('csb_request_f_time', 'csb_request', 'time');
 
         $this->createTable('csb_ip_info', array(
-            'ip' => 'INT NOT NULL',
+            'ip' => 'INT UNSIGNED NOT NULL',
             'ip_type' => "ENUM('blocked','search_engine') NOT NULL",
             'till_time' => 'DATETIME NOT NULL',
         ), 'ENGINE = Memory');
@@ -21,7 +21,7 @@ class m120328_182028_add_csb_module extends CDbMigration
 
         $this->createTable('csb_log', array(
             'id' => 'pk',
-            'ip' => 'INT NOT NULL',
+            'ip' => 'INT UNSIGNED NOT NULL',
             'type' => "enum('lock','search_engine')",
             'create_time' => 'DATETIME NOT NULL',
             'till_time' => 'DATETIME NOT NULL',
